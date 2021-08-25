@@ -1,0 +1,27 @@
+{
+  "name": "puhelinluettelo_backend",
+  "version": "0.0.1",
+  "description": "Tämä on kurssin Full-stack development repositorio. Kurssi on osa HY:n MOOC -verkko-oppimisympäristöä.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ErikHusgafvel/puhelinluettelon_backend.git"
+  },
+  "author": "Erik Husgafvel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ErikHusgafvel/puhelinluettelon_backend/issues"
+  },
+  "homepage": "https://github.com/ErikHusgafvel/puhelinluettelon_backend#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
