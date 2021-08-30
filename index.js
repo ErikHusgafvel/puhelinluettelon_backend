@@ -25,10 +25,17 @@ let persons = [
     }
 ]
 
+morgan.token('json', function strinifyJson(request) {
+    if(request.method === 'POST') {
+        return JSON.stringify(request.body)
+    }
+    return " "
+})
+
 const app = express()
 
 app.use(express.json())
-app.use(morgan('tiny'))
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms :json'))
 
 app.get('/', (request, response) => {
     response.send('<h1>Hello world!</h1>')
