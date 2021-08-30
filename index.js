@@ -1,5 +1,6 @@
 const { request, response } = require('express')
 const express = require('express')
+var morgan = require('morgan')
 
 let persons = [
     {
@@ -27,6 +28,7 @@ let persons = [
 const app = express()
 
 app.use(express.json())
+app.use(morgan('tiny'))
 
 app.get('/', (request, response) => {
     response.send('<h1>Hello world!</h1>')
