@@ -25,7 +25,7 @@ let persons = [
     }
 ]
 
-morgan.token('json', function strinifyJson(request) {
+morgan.token('json', function stringifyJson(request) {
     if(request.method === 'POST') {
         return JSON.stringify(request.body)
     }
