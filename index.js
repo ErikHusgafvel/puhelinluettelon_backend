@@ -1,5 +1,6 @@
 const { request, response } = require('express')
 const express = require('express')
+const cors = require('cors')
 var morgan = require('morgan')
 
 
@@ -12,6 +13,7 @@ morgan.token('json', function stringifyJson(request) {
 
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :json'))
 
@@ -76,7 +78,6 @@ const generateId = () => {
 app.post('/api/persons', (request, response) => {
     
     const body = request.body
-    console.log(body)
 
     if(!body.name) {
         return response.status(400).json({
