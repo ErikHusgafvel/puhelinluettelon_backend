@@ -46,19 +46,19 @@ app.get('/', (request, response) => {
 })
 
 app.get('/api/persons', (request, response) => {
-    response.json(persons)
+    response.status(200).json(persons)
 })
 
 app.get('/info', (request, response) => {
     const len = persons.length
-    response.send(`<div><p>Phonebook has info for ${len} people.</p><p>${Date(Date.now())}</p></div>`)
+    response.status(200).send(`<div><p>Phonebook has info for ${len} people.</p><p>${Date(Date.now())}</p></div>`)
 })
 
 app.get('/api/persons/:id', (request, response) => {
     const id = Number(request.params.id)
     const person = persons.find(person => person.id === id)
     if (person) {
-        response.json(person)
+        response.status(200).json(person)
     } else {
         response.status(404).end()
     }
@@ -107,7 +107,7 @@ app.post('/api/persons', (request, response) => {
     
     persons = persons.concat(person)
 
-    response.json(person)
+    response.status(200).json(person)
 })
 
 const unknownEndpoint = (req, res) => {
