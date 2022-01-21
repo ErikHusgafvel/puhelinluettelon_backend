@@ -42,7 +42,7 @@ let persons = [
 
 
 app.get('/', (request, response) => {
-    response.send('<h1>Hello world!</h1>')
+    response.status(200).send('<h1>Hello world!</h1>')
 })
 
 app.get('/api/persons', (request, response) => {
