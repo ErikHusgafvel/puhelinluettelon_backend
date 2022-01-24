@@ -1,1 +1,1 @@
-DELETE http://localhost:3001/api/persons/2/
+DELETE https://protected-thicket-72115.herokuapp.com/api/persons/2 HTTP/1.1
