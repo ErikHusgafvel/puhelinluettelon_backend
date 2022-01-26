@@ -1,3 +1,4 @@
 /part1
 node_modules
 .eslintcache
+.env
