@@ -9,18 +9,19 @@ if (process.argv.length<3) {
   const url =
     `mongodb+srv://erik:${password}@cluster0.fucj9.mongodb.net/phonebook-app?
     retryWrites=true&w=majority`
-    
+
   mongoose.connect(url)
 
   const personSchema = new mongoose.Schema({
     name: String,
     number: String,
   })
-  
+
   const Person = mongoose.model('Person', personSchema)
 
-  console.log("phonebook:")
-  Person.find({}).then(result => {
+  console.log('phonebook:')
+  Person.find({})
+    .then(result => {
       result.forEach(person => {
         console.log(`${person.name} ${person.number}`)
       })
@@ -33,22 +34,22 @@ if (process.argv.length<3) {
   const url =
     `mongodb+srv://erik:${password}@cluster0.fucj9.mongodb.net/phonebook-app?
     retryWrites=true&w=majority`
-    
+
   mongoose.connect(url)
 
   const personSchema = new mongoose.Schema({
     name: String,
     number: String,
   })
-  
+
   const Person = mongoose.model('Person', personSchema)
 
   const person = new Person({
     name: `${name}`,
     number: `${number}`,
   })
-  
-  person.save().then(result => {
+
+  person.save().then(() => {
     console.log(`Added ${name} number ${number} to phonebook`)
     mongoose.connection.close()
   })
