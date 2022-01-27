@@ -15,12 +15,14 @@ mongoose.connect(url)
     name: {
       type: String,
       minlength: 3,
-      required: true
+      required: [true, 'Name is required with min. length 3 characters.']
     },
     number: {
       type: String,
-      minlength: 8,
-      required: true
+      validate: (value) => {
+        return /\b\d{3}-\d{4,}\b/.test(value) || /\b\d{2}-\d{5,}\b/.test(value) 
+      },
+      required: [true, 'Valid phone number is required.']
     }
   })
 

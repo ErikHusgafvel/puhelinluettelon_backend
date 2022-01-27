@@ -21,31 +21,6 @@ app.use(express.json())
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :json'))
 
 /*
-let persons = [
-    {
-        id : 1, 
-        name: "Arto Hellas", 
-        number: "040-123456"
-    },
-    {
-        id: 2,
-        name: "Ada Lovelace",
-        number: "39-44-5323523"
-    },
-    {
-        id: 3,
-        name: "Dan Abramov",
-        number: "12-43-234345"
-    }, 
-    {
-        id: 4,
-        name: "Mary Poppendick",
-        number: "39-23-6423122"
-    }
-]
-*/
-
-/*
 app.get('/', (request, response) => {
     response.status(200).send('<h1>Hello world!</h1>')
 })
@@ -89,24 +64,12 @@ app.put('/api/persons/:id', (request, response, next) => {
 
     const body = request.body
 
-    if(!body.name) {
-        return response.status(400).json({
-            error: 'name missing'
-        })
-    } 
-    
-    if(!body.number) {
-        return response.status(400).json({
-            error: 'number missing'
-        })
-    }
-
     const person = {
         name: body.name,
         number: body.number,
     }
 
-    Person.findByIdAndUpdate(request.params.id, person, { new: true })
+    Person.findByIdAndUpdate(request.params.id, person, { new: true, runValidators: true })
         .then(updatedPerson => {
             response.status(200).json(updatedPerson)
         })
